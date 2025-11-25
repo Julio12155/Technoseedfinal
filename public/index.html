@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuccuVida - Plantas y Suculentas</title>
-    <link rel="stylesheet" href="/public/style.css">   
+    <title>Technoseed - Plantas y Suculentas</title>
+    <link rel="stylesheet" href="style.css">   
 </head>
 <body>
+    <div class="top-bar">
+        <div class="container-top">
+            <span>Bienvenido a Technoseed</span>
+            <a href="/cliente" class="btn-login">Iniciar Sesión</a>
+        </div>
+    </div>
+
     <header>
-        <h1>SuccuVida</h1>
+        <h1>Technoseed</h1>
         <p>Plantas y Suculentas</p>
     </header>
 
@@ -16,205 +23,193 @@
         <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#plantas">Plantas</a></li>
-            <li><a href="#menu">Productos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
             <li><a href="#historia">Historia</a></li>
+            <li><a href="#plantas">Inventario</a></li>
+            <li><a href="#menu">Precios</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
 
     <div class="hero" id="inicio">
-        <h2>SuccuVida</h2>
-        <p>Nuestra variedad de plantas</p>
-        <a href="#plantas">Ver plantas</a>
+        <h2>La naturaleza en tu hogar</h2>
+        <p>Descubre nuestra variedad de plantas ecológicas</p>
+        <a href="#menu">Ver Catálogo</a>
     </div>
 
     <div class="container">
+        
         <section id="nosotros">
             <h2>Nosotros</h2>
-            
-            <div class="info-box">
-                <h3>Horario</h3>
-                <p>De martes a sabado de 8:30am-11:30pm</p>
-                <p>De domingo a lunes de 1pm-11pm</p>
-            </div>
-
-            <div class="info-box">
-                <h3>A que nos dedicamos</h3>
-                <p>Nos especializamos en el cultivo y venta de plantas y suculentas ecológicas, promoviendo prácticas de jardinería sostenible y contribuyendo a la conservación del medio ambiente.</p>
-            </div>
-
-            <div class="info-box">
-                <h3>Productos</h3>
-                <p>Tenemos gran variedad de productos en relacion a compra y venta de plantas puedes abastecer tu negocio de plantas con nosotros o simplemente comprarlos para tu jardin. Estamos a tu disposicion.</p>
+            <div class="grid-2">
+                <div class="info-box">
+                    <h3>A qué nos dedicamos</h3>
+                    <p>Nos especializamos en el cultivo y venta de plantas y suculentas ecológicas, promoviendo prácticas de jardinería sostenible y contribuyendo a la conservación del medio ambiente.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Horario de Atención</h3>
+                    <p><strong>Mar - Sab:</strong> 8:30am - 11:30pm</p>
+                    <p><strong>Dom - Lun:</strong> 1:00pm - 11:00pm</p>
+                </div>
             </div>
         </section>
 
         <section id="historia">
-            <h2>Historia</h2>
-            <p>En el corazón de una pequeña comunidad montañosa, rodeada de bosques frondosos y ríos cristalinos, nació GreenRoot Innovations, una empresa pionera dedicada al cultivo y distribución de plantas y suculentas. Fundada en 2015 por Martina Solís, una bióloga y emprendedora apasionada por la naturaleza, la empresa comenzó como un modesto vivero en su jardín trasero.</p>
-            <p>La visión de Martina era clara: crear una empresa que no solo prosperara en el negocio de las plantas, sino que también promoviera activamente prácticas ambientales sostenibles.</p>
+            <h2>Nuestra Historia</h2>
+            <div class="info-box">
+                <p>En el corazón de una pequeña comunidad montañosa, nació <strong>GreenRoot Innovations</strong> (ahora Technoseed). Fundada en 2015 por Martina Solís, el proyecto comenzó como un modesto vivero en su jardín trasero con la visión de promover prácticas ambientales sostenibles.</p>
+            </div>
         </section>
 
         <section id="plantas">
-            <h2>Variedad de plantas por sucursal</h2>
-            <table>
-                <tr>
-                    <th>Sucursal</th>
-                    <th>Sedum</th>
-                    <th>Pata de elefante</th>
-                    <th>Suculentas</th>
-                    <th>Lengua de suegra</th>
-                    <th>Cactus exoticos</th>
-                </tr>
-                <tr>
-                    <td>Santa Fe</td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="available">Disponible</span></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Tlatelolco</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="available">Disponible</span></td>
-                </tr>
-                <tr>
-                    <td>Queretaro</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="available">Disponible</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Morelia</td>
-                    <td></td>
-                    <td><span class="available">Disponible</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+            <h2>Disponibilidad por Sucursal</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sucursal</th>
+                            <th>Sedum</th>
+                            <th>Pata de elefante</th>
+                            <th>Suculentas</th>
+                            <th>Lengua de suegra</th>
+                            <th>Cactus exóticos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Santa Fe</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><span class="available">Disponible</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Tlatelolco</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><span class="available">Disponible</span></td>
+                        </tr>
+                        <tr>
+                            <td>Querétaro</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><span class="available">Disponible</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Morelia</td>
+                            <td>-</td>
+                            <td><span class="available">Disponible</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section>
-            <h2>Variedad en nuestras plantas</h2>
+            <h2>Conoce nuestras especies</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/cq5bmkpAULM" title="100 tipos de SUCULENTAS" frameborder="0" allowfullscreen></iframe>
             </div>
         </section>
 
         <section id="menu">
-            <h2>Menu</h2>
-            
-            <div class="menu-section">
-                <h3>Plantas</h3>
-                <ul>
-                    <li>Lengua de elefante ------------------------------------ $101</li>
-                    <li>Cactus cola de raza ------------------------------------ $160</li>
-                    <li>Hecheveria ------------------------------------ $123</li>
-                    <li>Palmera areca ------------------------------------ $121</li>
-                    <li>Orquídea ------------------------------------ $107</li>
-                </ul>
-            </div>
+            <h2>Lista de Precios</h2>
+            <div class="grid-3">
+                <div class="menu-section">
+                    <h3>Plantas</h3>
+                    <ul>
+                        <li>Lengua de elefante <span>$101</span></li>
+                        <li>Cactus cola de rata <span>$160</span></li>
+                        <li>Echeveria <span>$123</span></li>
+                        <li>Palmera areca <span>$121</span></li>
+                        <li>Orquídea <span>$107</span></li>
+                    </ul>
+                </div>
 
-            <div class="menu-section">
-                <h3>Macetas</h3>
-                <ul>
-                    <li>Terracota ------------------------------------ $20</li>
-                    <li>Cerámica esmaltada ------------------------------------ $15</li>
-                    <li>Vidrio templado ------------------------------------ $18</li>
-                    <li>Fibra de carbono ------------------------------------ $55</li>
-                    <li>Fibra de vidrio ------------------------------------ $32</li>
-                </ul>
-            </div>
+                <div class="menu-section">
+                    <h3>Macetas</h3>
+                    <ul>
+                        <li>Terracota <span>$20</span></li>
+                        <li>Cerámica esmaltada <span>$15</span></li>
+                        <li>Vidrio templado <span>$18</span></li>
+                        <li>Fibra de carbono <span>$55</span></li>
+                        <li>Fibra de vidrio <span>$32</span></li>
+                    </ul>
+                </div>
 
-            <div class="menu-section">
-                <h3>Tierra</h3>
-                <ul>
-                    <li>Especializada ------------------------------------ $30</li>
-                    <li>Alta en calcio y en vitaminas ------------------------------------ $36</li>
-                    <li>Plantas de sombra ------------------------------------ $28</li>
-                    <li>Para Bonsais ------------------------------------ $25</li>
-                    <li>Alcalina ------------------------------------ $10</li>
-                </ul>
+                <div class="menu-section">
+                    <h3>Tierra y Sustratos</h3>
+                    <ul>
+                        <li>Especializada <span>$30</span></li>
+                        <li>Alta en calcio <span>$36</span></li>
+                        <li>Plantas de sombra <span>$28</span></li>
+                        <li>Para Bonsáis <span>$25</span></li>
+                        <li>Alcalina <span>$10</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ubicacion">
+            <h2>Ubicación y Servicios</h2>
+            <div class="info-box">
+                <p><strong>Sucursal Principal:</strong> Monumento a la Revolución.</p>
+                <p>Contamos con sucursales en Guadalajara y Chiapas. Realizamos reservaciones y pedidos especiales para crear tu jardín ideal a medida.</p>
+                <p>Organizamos eventos comunitarios mensuales, intercambios de plantas y charlas sobre sostenibilidad.</p>
             </div>
         </section>
 
         <section id="contacto">
-            <h2>Seccion de contacto</h2>
-            <form action="Enviado.html">
-                <label>Nombre:</label>
-                <input type="text">
-                
-                <label>E-mail:</label>
-                <input type="email">
-                
-                <label>Password:</label>
-                <input type="password">
-                
-                <label>Plantas preferidas:</label>
-                <input type="checkbox"> Cactus
-                <input type="checkbox"> Ficus Lyrata
-                <input type="checkbox"> Lengua de suegra
-                <input type="checkbox"> Collar de perlas
-                <input type="checkbox"> Orquideas
-                <br><br>
-                
-                <label>¿Faltaron plantas?</label>
-                si <input type="radio" name="faltaron"> 
-                no <input type="radio" name="faltaron">
-                <br><br>
-                
-                <label>Cuales:</label>
-                <input type="text">
-                
-                <input type="reset" value="Limpiar">
-                <input type="submit" value="Enviar">
-            </form>
+            <h2>Contáctanos</h2>
+            <div class="grid-2">
+                <form action="Enviado.html">
+                    <label>Nombre:</label>
+                    <input type="text" placeholder="Tu nombre" required>
+                    
+                    <label>E-mail:</label>
+                    <input type="email" placeholder="tucorreo@ejemplo.com" required>
+                    
+                    <label>Plantas de interés:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Cactus</label>
+                        <label><input type="checkbox"> Ficus Lyrata</label>
+                        <label><input type="checkbox"> Lengua de suegra</label>
+                        <label><input type="checkbox"> Orquídeas</label>
+                    </div>
+                    <br>
+                    <label>¿Buscas algo más?</label>
+                    <input type="text" placeholder="Escribe aquí...">
+                    
+                    <div class="form-buttons">
+                        <input type="submit" value="Enviar Mensaje">
+                    </div>
+                </form>
+
+                <div class="social-box">
+                    <h3>Redes Sociales</h3>
+                    <ul class="social-list">
+                        <li><strong>Facebook:</strong> Technoseed</li>
+                        <li><strong>Instagram:</strong> @Technoseed</li>
+                        <li><strong>WhatsApp:</strong> +52 123 456 7890</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Contactanos</h2>
-            <ul class="social-list">
-                <li>Facebook: Succuvida</li>
-                <li>Instagram: @SuccuVida</li>
-                <li>WhatsApp: +1234567890</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Ubicacion</h2>
-            <div class="info-box">
-                <p>Nuestra sucursal principal se encuentra en Monumento a la revolucion</p>
-            </div>
-            <div class="info-box">
-                <p>Puedes encontrarnos en mas sucursales dentro del pais como en guadalajara y chiapas te mostramos otros trabajos</p>
-            </div>
-            <div class="info-box">
-                <p>Tambien puedes hacer reservaciones en todas nuestras sucursales dentro del pais</p>
-            </div>
-            <div class="info-box">
-                <p>Nuestra sucursal se especializa en una variedad única de suculentas, desde las populares Echeverias con sus rosetas perfectamente simétricas hasta las exóticas Haworthias con sus patrones fascinantes.</p>
-            </div>
-            <div class="info-box">
-                <p>Cada mes, nuestra sucursal también organiza eventos comunitarios, desde intercambios de plantas hasta charlas sobre sostenibilidad.</p>
-            </div>
-            <div class="info-box">
-                <p>Puedes crear tu propio jardin desde cero comprandonos todo lo necesario para poder crear el jardin ideal a tus gustos y medidas</p>
-            </div>
-        </section>
     </div>
 
     <footer>
-        <h3>SuccuVida</h3>
-        <p>Emiliano Palacios Fernandez</p>
-        <p>Encuentranos en Monumento a la revolucion</p>
+        <h3>Technoseed</h3>
+        <p>Julio César Hernandez Vargas</p>
+        <p>&copy; 2025 - Pasión por la naturaleza</p>
     </footer>
 </body>
 </html>

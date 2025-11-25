@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F8FAF5;
+    color: #2D5016;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border: 1px solid #8BB174;
+    box-shadow: 5px 5px 0px #E8F5E1;
+    border-radius: 8px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    color: #2D5016;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    color: #4A7C2C;
+    font-size: 14px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #8BB174;
+    background-color: #F8FAF5;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #2D5016;
+    background-color: white;
+}
+
+.actions {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    color: #4A7C2C;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #2D5016;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #4A7C2C;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #2D5016;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: none;
+}
+
+.admin-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.admin-section hr {
+    border: 0;
+    border-top: 1px dashed #8BB174;
+    margin-bottom: 15px;
+}
+
+.admin-section p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.btn-admin {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #E8F5E1;
+    color: #2D5016;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid #8BB174;
+}
+
+.btn-admin:hover {
+    background-color: #8BB174;
+    color: white;
+}
+
+.back-home {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-home a {
+    color: #4A7C2C;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-home a:hover {
+    text-decoration: none;
+}
