@@ -1,66 +1,143 @@
+let cart = []
+let allProducts = []
+
 document.addEventListener('DOMContentLoaded', () => {
-    fetchProductos()
+    loadProducts()
+    
+    document.getElementById('btn-checkout').addEventListener('click', processOrder)
 })
 
-async function fetchProductos() {
+async function loadProducts() {
     try {
         const response = await fetch('/api/productos')
-        if (!response.ok) {
-            throw new Error('Error al cargar productos')
-        }
-        const productos = await response.json()
-        renderProductos(productos)
+        if (!response.ok) throw new Error('Error')
+        
+        allProducts = await response.json()
+        renderCatalog(allProducts)
     } catch (error) {
-        console.error(error)
-        alert('No se pudo conectar con el servidor')
+        const grid = document.getElementById('products-grid')
+        grid.innerHTML = '<p class="error-msg">No hay productos en existencias por el momento.</p>'
     }
 }
 
-function renderProductos(productos) {
-    const container = document.getElementById('product-list')
-    container.innerHTML = ''
+function renderCatalog(products) {
+    const grid = document.getElementById('products-grid')
+    grid.innerHTML = ''
 
-    productos.forEach(producto => {
+    if (products.length === 0) {
+        grid.innerHTML = '<p class="no-stock">No hay productos en existencias.</p>'
+        return
+    }
+
+    products.forEach(product => {
         const card = document.createElement('div')
-        card.className = 'menu-section'
+        card.className = 'product-card'
         
-        const nombre = document.createElement('h3')
-        nombre.textContent = producto.nombre
+        const price = parseFloat(product.precio).toFixed(2)
 
-        const precio = document.createElement('p')
-        precio.innerHTML = `<strong>Precio:</strong> $${producto.precio}`
-
-        const stock = document.createElement('p')
-        stock.innerHTML = `<strong>Disponibles:</strong> ${producto.stock}`
-
-        const desc = document.createElement('p')
-        desc.textContent = producto.descripcion
-        desc.style.fontSize = '0.9em'
-        desc.style.marginTop = '10px'
-
-        const btn = document.createElement('button')
-        btn.textContent = 'Añadir al Carrito'
-        btn.style.width = '100%'
-        btn.style.padding = '10px'
-        btn.style.marginTop = '15px'
-        btn.style.backgroundColor = '#4A7C2C'
-        btn.style.color = 'white'
-        btn.style.border = 'none'
-        btn.style.cursor = 'pointer'
-        
-        btn.addEventListener('mouseover', () => {
-            btn.style.backgroundColor = '#2D5016'
-        })
-        btn.addEventListener('mouseout', () => {
-            btn.style.backgroundColor = '#4A7C2C'
-        })
-
-        card.appendChild(nombre)
-        card.appendChild(desc)
-        card.appendChild(precio)
-        card.appendChild(stock)
-        card.appendChild(btn)
-
-        container.appendChild(card)
+        card.innerHTML = `
+            <div class="img-container">
+                <img src="${product.imagen_url || '/imagenes/productos/imagen-planta.png'}" alt="${product.nombre}">
+            </div>
+            <div class="card-details">
+                <h4>${product.nombre}</h4>
+                <p class="desc">${product.descripcion}</p>
+                <div class="buy-row">
+                    <span class="price">$${price}</span>
+                    <button onclick="addToCart(${product.id})" class="btn-add">Agregar ＋</button>
+                </div>
+            </div>
+        `
+        grid.appendChild(card)
     })
 }
+
+function addToCart(id) {
+    const product = allProducts.find(p => p.id === id)
+    const existingItem = cart.find(item => item.id === id)
+
+    if (existingItem) {
+        existingItem.cantidad++
+    } else {
+        cart.push({ ...product, cantidad: 1 })
+    }
+    updateCartUI()
+}
+
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id)
+    updateCartUI()
+}
+
+function updateCartUI() {
+    const container = document.getElementById('cart-items')
+    const totalEl = document.getElementById('cart-total')
+    const btn = document.getElementById('btn-checkout')
+
+    container.innerHTML = ''
+    let total = 0
+
+    if (cart.length === 0) {
+        container.innerHTML = '<p class="empty-msg">Tu carrito está vacío</p>'
+        btn.disabled = true
+        totalEl.textContent = '$0.00'
+        return
+    }
+
+    cart.forEach(item => {
+        const itemTotal = item.precio * item.cantidad
+        total += itemTotal
+        
+        const div = document.createElement('div')
+        div.className = 'cart-item'
+        div.innerHTML = `
+            <div class="item-info">
+                <strong>${item.nombre}</strong>
+                <small>${item.cantidad} x $${item.precio}</small>
+            </div>
+            <div class="item-actions">
+                <span>$${itemTotal.toFixed(2)}</span>
+                <button onclick="removeFromCart(${item.id})" class="btn-remove">×</button>
+            </div>
+        `
+        container.appendChild(div)
+    })
+
+    totalEl.textContent = `$${total.toFixed(2)}`
+    btn.disabled = false
+}
+
+async function processOrder() {
+    if (!confirm('¿Confirmar pedido?')) return
+
+    const total = cart.reduce((sum, item) => sum + (item.precio * item.cantidad), 0)
+    const btn = document.getElementById('btn-checkout')
+    btn.disabled = true
+    btn.textContent = 'Procesando...'
+
+    try {
+        const response = await fetch('/api/pedidos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: cart, total: total })
+        })
+
+        const result = await response.json()
+
+        if (response.ok) {
+            alert(`¡Gracias por tu compra!\nID de Pedido: ${result.pedidoId}`)
+            cart = []
+            updateCartUI()
+        } else {
+            alert('Error: ' + result.error)
+        }
+    } catch (error) {
+        alert('Error de conexión')
+    } finally {
+        btn.disabled = false
+        btn.textContent = 'Realizar Pedido'
+    }
+}
+
+window.addToCart = addToCart
+window.removeFromCart = removeFromCart

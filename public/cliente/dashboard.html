@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Catálogo - Technoseed</title>
+    <title>Catálogo y Pedidos - Technoseed</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-
     <div id="dynamic-header"></div>
 
-    <div class="container">
-        <section>
-            <h2>Catálogo Exclusivo</h2>
-            <div id="product-list" class="dashboard-content">
+    <div class="catalog-wrapper">
+        
+        <div class="products-section">
+            <div class="section-header">
+                <h2>Catálogo Disponible</h2>
+                <p>Selecciona tus plantas favoritas</p>
+            </div>
+            <div id="products-grid" class="products-grid"></div>
+        </div>
+
+        <aside class="cart-sidebar">
+            <div class="cart-container">
+                <h3>Tu Carrito</h3>
+                <div id="cart-items" class="cart-items">
+                    <p class="empty-msg">Tu carrito está vacío</p>
                 </div>
-        </section>
+                <div class="cart-summary">
+                    <div class="total-row">
+                        <span>Total:</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <button id="btn-checkout" class="btn-checkout" disabled>Realizar Pedido</button>
+                </div>
+            </div>
+        </aside>
+
     </div>
 
-    <footer>
-        <p>Technoseed &copy; 2025</p>
-    </footer>
-
-    <script src="/js/loader.js"></script>
+    <script src="/js/header.js"></script>
     <script src="dashboard.js"></script>
 </body>
 </html>

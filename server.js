@@ -6,6 +6,7 @@ const path = require('path')
 const authRoutes = require('./routes/authRoutes')
 const productosRoutes = require('./routes/productosRoutes')
 const adminRoutes = require('./routes/adminRoutes') 
+const pedidosRoutes = require('./routes/pedidosRoutes')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', authRoutes)
 app.use('/api/productos', productosRoutes)
+app.use('/api/pedidos', pedidosRoutes)
 app.use('/api/admin', adminRoutes) 
 
 app.get('/', (req, res) => {
