@@ -98,3 +98,25 @@ exports.logout = (req, res) => {
         res.redirect('/')
     })
 }
+exports.getSession = (req, res) => {
+    if (req.session.userId) {
+        res.json({ 
+            isAuthenticated: true, 
+            role: req.session.role, 
+            nombre: req.session.nombre || req.session.username 
+        })
+    } else {
+        res.json({ isAuthenticated: false })
+    }
+}
+exports.verificarSesion = (req, res) => {
+    if (req.session && req.session.userId) {
+        res.json({
+            ok: true,
+            rol: req.session.role,
+            usuario: req.session.nombre || req.session.username
+        })
+    } else {
+        res.status(401).json({ ok: false, message: 'No hay sesión activa' })
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Technoseed</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="dynamic-header"></div>
+
+    <div class="admin-wrapper">
+        
+        <aside class="admin-sidebar">
+            <h3>Accesos Rápidos</h3>
+            <nav class="sidebar-nav">
+                <a href="productos/crear.html" class="sidebar-btn">＋ Nuevo Producto</a>
+                <a href="productos/index.html" class="sidebar-link">Gestionar Inventario</a>
+                <a href="#" class="sidebar-link">Ver Pedidos</a>
+                <a href="#" class="sidebar-link">Usuarios</a>
+            </nav>
+        </aside>
+
+        <main class="admin-content">
+            <div class="page-header">
+                <h2>Resumen General</h2>
+                <span style="color: #666; font-size: 0.9em;">Datos actualizados en tiempo real</span>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Productos Totales</h4>
+                    <p class="number" id="stat-products">--</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Ventas Totales</h4>
+                    <p class="number" id="stat-sales">$0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Clientes Registrados</h4>
+                    <p class="number" id="stat-clients">--</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Pedidos Pendientes</h4>
+                    <p class="number" id="stat-orders">0</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Estado del Sistema</h3>
+                <div class="placeholder-box">
+                    <p>Conexión a base de datos establecida correctamente.</p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="/js/header.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

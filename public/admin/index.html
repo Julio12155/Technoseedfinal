@@ -3,33 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administración - Technoseed</title>
+    <title>Admin Login - Technoseed</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="login-page">
+    
     <div class="admin-login-container">
         <div class="admin-login-box">
             <div class="header-admin">
-                <h2>Panel Administrativo</h2>
-                <p>Acceso restringido</p>
+                <h2>Technoseed Admin</h2>
+                <p>Acceso restringido al personal</p>
             </div>
-            
-            <form action="dashboard.html">
+
+            <div id="error-msg" style="color: #c0392b; text-align: center; margin-bottom: 15px; font-size: 13px; display: none;">
+                Credenciales incorrectas
+            </div>
+
+            <form action="/admin/login" method="POST">
                 <div class="input-group">
-                    <label>Usuario Admin</label>
-                    <input type="text" required>
+                    <label>Usuario</label>
+                    <input type="text" name="username" required autocomplete="off">
                 </div>
+                
                 <div class="input-group">
-                    <label>Clave de Acceso</label>
-                    <input type="password" required>
+                    <label>Contraseña</label>
+                    <input type="password" name="password" required>
                 </div>
-                <button type="submit">Entrar al Panel</button>
+
+                <button type="submit" class="login-btn">INGRESAR AL SISTEMA</button>
             </form>
-            
+
             <div class="back-link">
-                <a href="../cliente/index.html">Volver al Login de Clientes</a>
+                <a href="/">&larr; Volver a la tienda</a>
             </div>
         </div>
     </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error')) {
+            const msg = document.getElementById('error-msg');
+            msg.style.display = 'block';
+            if(urlParams.get('error') === 'servidor') msg.textContent = 'Error del servidor';
+        }
+    </script>
 </body>
 </html>

@@ -16,7 +16,29 @@ CREATE TABLE IF NOT EXISTS clientes (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    especificaciones TEXT,
+    precio DECIMAL(10, 2) NOT NULL,
+    stock INT DEFAULT 15,
+    imagen_url VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 INSERT INTO admins (username, password_hash) VALUES 
-('admin', '$2a$12$rmwdqpJUywq9UNPDpaxtP.da79Ac0K8Hm9hxRN5NlXMNswBSZ0ipW');
+('admin', '$2a$12$BGJnrpvTF2Z87nSKRnzYZ.0XltettrM848Fr9U4x.7YANmjwrTICa');
+
 INSERT INTO clientes (nombre, email, password_hash) VALUES 
 ('Cliente Usuario', 'cliente@technoseed.com', '$2a$12$s5p6DjpK4eL5Rt5impTBEucWl1nRjzemHKGkW1hIni0cijIyT1CdC');
+
+INSERT INTO productos (nombre, descripcion, especificaciones, precio, stock, imagen_url) VALUES
+('Palma Areca en maceta gris', 'Elegante arreglo de Palma Areca ideal para dar vida y altura a espacios interiores.', 'Palma Areca\nFollaje\nMaceta de cerámica gris\nTarjeta\nAltura: 40–70 cm', 800.00, 15, '/imagenes/productos/imagen-planta.png'),
+('Pothos Dorado en macramé', 'Planta colgante Pothos Dorado con soporte artesanal de macramé.', 'Planta Pothos Dorado\nMaceta pequeña dentro de colgante de macramé\nTarjeta\nLargo: 30–40 cm', 350.00, 15, '/imagenes/productos/imagen-planta.png'),
+('Sansevieria en maceta de vidrio', 'Moderna Sansevieria en recipiente de vidrio transparente.', 'Planta Sansevieria\nMaceta de vidrio\nTarjeta\nAltura: 30–50 cm', 450.00, 15, '/imagenes/productos/imagen-planta.png'),
+('Maranta en maceta blanca', 'Maranta tricolor presentada en una maceta de cerámica blanca minimalista.', 'Planta Maranta\nMaceta de cerámica blanca\nTarjeta\nAltura: 20–30 cm', 700.00, 15, '/imagenes/productos/imagen-planta.png'),
+('Anthurium Rojo en maceta dorada', 'Llamativo Anthurium de flores rojas en maceta metálica dorada.', 'Planta Anthurium\nMaceta metálica dorada\nTarjeta\nAltura: 25–40 cm', 1200.00, 15, '/imagenes/productos/imagen-planta.png'),
+('Lavanda en maceta de barro', 'Aromática planta de Lavanda en maceta de barro estilo rústico.', 'Planta Lavanda\nMaceta de barro\nTarjeta\nAltura: 20–40 cm', 600.00, 15, '/imagenes/productos/imagen-planta.png'),
+('Petunia en maceta decorativa', 'Colorida Petunia en maceta plástica de diseño.', 'Planta Petunia\nMaceta plástica decorativa\nTarjeta\nAltura: 15–25 cm', 200.00, 15, '/imagenes/productos/imagen-planta.png'),
+('Geranio en maceta de cemento', 'Resistente Geranio en maceta de cemento para un toque industrial.', 'Planta Geranio\nMaceta de cemento\nTarjeta\nAltura: 20–35 cm', 300.00, 15, '/imagenes/productos/imagen-planta.png');
