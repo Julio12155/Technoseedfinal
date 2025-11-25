@@ -18,3 +18,5 @@ CREATE TABLE IF NOT EXISTS clientes (
 
 INSERT INTO admins (username, password_hash) VALUES 
 ('admin', '$2a$12$rmwdqpJUywq9UNPDpaxtP.da79Ac0K8Hm9hxRN5NlXMNswBSZ0ipW');
+INSERT INTO clientes (nombre, email, password_hash) VALUES 
+('Cliente Usuario', 'cliente@technoseed.com', '$2a$12$s5p6DjpK4eL5Rt5impTBEucWl1nRjzemHKGkW1hIni0cijIyT1CdC');

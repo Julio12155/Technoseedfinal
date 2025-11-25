@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos - Technoseed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="header-actions">
+            <h1>Inventario de Productos</h1>
+            <div>
+                <a href="../dashboard.html" class="btn" style="color: #2D5016; margin-right: 10px;">Volver al Dashboard</a>
+                <a href="crear.html" class="btn btn-primary">+ Nuevo Producto</a>
+            </div>
+        </div>
+
+        <table id="productsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', cargarProductos);
+
+        async function cargarProductos() {
+            try {
+                const res = await fetch('/api/productos');
+                const productos = await res.json();
+                const tbody = document.querySelector('#productsTable tbody');
+                tbody.innerHTML = '';
+
+                productos.forEach(prod => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${prod.id}</td>
+                        <td><img src="${prod.imagen_url}" class="product-img" alt="img"></td>
+                        <td>${prod.nombre}</td>
+                        <td>$${prod.precio}</td>
+                        <td>${prod.stock}</td>
+                        <td>
+                            <a href="editar.html?id=${prod.id}" class="btn btn-edit">Editar</a>
+                            <button onclick="eliminarProducto(${prod.id})" class="btn btn-danger">Eliminar</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                alert('Error al cargar productos');
+            }
+        }
+
+        async function eliminarProducto(id) {
+            if(!confirm('¿Estás seguro de eliminar este producto?')) return;
+
+            try {
+                const res = await fetch(`/api/productos/${id}`, { method: 'DELETE' });
+                if(res.ok) {
+                    cargarProductos();
+                } else {
+                    alert('Error al eliminar');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
