@@ -5,20 +5,20 @@ exports.obtenerEstadisticas = async (req, res) => {
         const [productos] = await db.execute('SELECT COUNT(*) as total FROM productos')
         const [clientes] = await db.execute('SELECT COUNT(*) as total FROM clientes')
         
-        const ventas = 0 
-        const pedidos = 0
+        const [pedidosCount] = await db.execute('SELECT COUNT(*) as total FROM pedidos')
+        const [ventasTotal] = await db.execute('SELECT SUM(total) as total FROM pedidos')
 
         res.json({
             success: true,
             data: {
                 productos: productos[0].total,
                 clientes: clientes[0].total,
-                ventas: ventas,
-                pedidos: pedidos
+                ventas: ventasTotal[0].total || 0, 
+                pedidos: pedidosCount[0].total     
             }
         })
     } catch (error) {
-        console.error('Error obteniendo estadísticas:', error)
+        console.error(error)
         res.status(500).json({ success: false, message: 'Error del servidor' })
     }
 }

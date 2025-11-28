@@ -29,7 +29,8 @@ exports.crear = async (req, res) => {
     }
 
     try {
-        const imagen_url = '/imagenes/productos/imagen-planta.png'
+        const imagen_url = req.file ? `/imagenes/productos/${req.file.filename}` : '/imagenes/productos/imagen-planta.png'
+        
         await db.execute(
             'INSERT INTO productos (nombre, descripcion, precio, stock, imagen_url) VALUES (?, ?, ?, ?, ?)',
             [nombre, descripcion, precio, stock, imagen_url]
@@ -44,15 +45,19 @@ exports.editar = async (req, res) => {
     const { id } = req.params
     const { nombre, precio, stock, descripcion } = req.body
 
-    if (!nombre || !precio || !stock) {
-        return res.status(400).json({ error: 'Datos inválidos' })
-    }
-
     try {
-        await db.execute(
-            'UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ? WHERE id = ?',
-            [nombre, descripcion, precio, stock, id]
-        )
+        if (req.file) {
+            const imagen_url = `/imagenes/productos/${req.file.filename}`
+            await db.execute(
+                'UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ?, imagen_url = ? WHERE id = ?',
+                [nombre, descripcion, precio, stock, imagen_url, id]
+            )
+        } else {
+            await db.execute(
+                'UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ? WHERE id = ?',
+                [nombre, descripcion, precio, stock, id]
+            )
+        }
         res.json({ message: 'Producto actualizado' })
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar' })
